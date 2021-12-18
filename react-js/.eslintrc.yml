@@ -2,6 +2,7 @@ env:
   browser: true
   es2021: true
 extends:
+  - plugin:prettier/recommended
   - plugin:react/recommended
   - airbnb
 parserOptions:
@@ -12,5 +13,8 @@ parserOptions:
 plugins:
   - react
 rules:
+  prettier/prettier: ["error", { "singleQuote": true }]
+  no-console: 0
+  arrow-body-style: 0
   react/function-component-definition: 0
   react/jsx-filename-extension: 0
