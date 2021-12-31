@@ -10,8 +10,11 @@
 // should return "found the needle at position 5"
 
 const findNeedle = haystack => {
-  
+  const needleIndex = haystack.findIndex(item => item === 'needle')
+  return `found the needle at position ${needleIndex}`
 }
 
+// findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])
+
 // Call your function below with a different 'haystack' to test it out:
-// findNeedle(<insert your haystack here pls>)
+console.log(findNeedle(['needle', 'poop', 'nose']))

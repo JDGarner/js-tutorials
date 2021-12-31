@@ -5,6 +5,7 @@
 
 // Can you write the function with just one line of code?
 
+const check = (array, variable) => array.includes(variable)
 
 // Check your function with the following code:
 
