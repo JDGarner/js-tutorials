@@ -185,3 +185,73 @@ const me = {
   lastName: myLastName,
 }
 
+
+
+// -------------------------------
+// Checking for missing / undefined values on objects:
+
+// Often it's useful to be able to see if some value is present on an object
+// for example, to check if an item has any discount:
+const itemOne = {
+  name: "socks",
+  price: 10,
+  discount: 0.8
+}
+
+const itemTwo = {
+  name: "muffin",
+  price: 2,
+}
+
+console.log(itemOne.discount) // would output 0.8
+console.log(itemTwo.discount) // would output undefined
+
+// If we want to run some code only if an item has a discount we could do this:
+if (itemOne.discount) {
+  console.log('Item one has a discount');
+}
+
+if (itemTwo.discount) {
+  console.log('Item two has a discount');
+  // ^ This console.log would never run because itemTwo.discount is undefined
+}
+
+
+
+
+
+// -------------------------------
+// Nested objects:
+
+// Sometimes objects are used to store collections of things instead of arrays
+// Like a bunch of items in a store:
+// The key of object is some kind of unique id for the item
+const items = {
+  cx957b: {
+    name: "table",
+    price: 20
+  },
+  os638c: {
+    name: "hat",
+    price: 12
+  }
+}
+
+// Object.keys:
+// - Gets an array containing all the keys of an object, e.g:
+console.log(Object.keys(items)) // would output ["cx957b", "os638c"]
+
+// Object.values:
+// - Gets an array containing all the values of an object, e.g:
+console.log(Object.values(items))
+// would output:
+// [
+//   {
+//     name: "table",
+//     price: 20
+//   },
+//   {
+//     name: "hat",
+//     price: 12
+//   }
+// ]
