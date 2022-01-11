@@ -4,46 +4,48 @@
 // and returns a new array with a random 50% chance to transform it to upper case
 // e.g. randomlyCapitalise(["hello", "one", "two"]) might return an array ["hello", "ONE", "TWO"]
 
-const randomlyCapitalise = (array) => {
-  const result = array.map((string) => {
-    if (Math.random() > 0.5) {
-      return string.toUpperCase();
-    } 
-      return string;
-  });
+// const randomlyCapitalise = array => {
+//   return array.map(item => {
+//     if(Math.random() > 0.5) {
+//       return item.toUpperCase()
+//     } else {
+//       return item;
+//     }
+//   })
+// }
 
-  return result;
-};
 
 // Test your function with the following code:
-console.log(randomlyCapitalise(["what's", "for", "lunch?"]));
+// console.log(randomlyCapitalise(["what's", "for", "lunch?"]));
 
 // Write a function to add all numbers together
 
-// const addAllNumbers = (array) => {
-//   let total = 0;
-
-//   for (let i = 0; i < array.length; i++) {
-//     total += array[i];
+// const addAllNumbers = array => {
+//   let result = 0;
+//   for (let index = 0; index < array.length; index++) {
+//     result += array[index];
 //   }
-
-//   return total;
+//   return result;
 // }
+
 
 // console.log(addAllNumbers([1, 2, 5, 6]));
 
+
 // // Write a function that doubles a number if it is larger than 5
 
-// const doubleAllNumbers = (array) => {
-//   const newArray = array.map(element => {
-//     if(element > 5) {
-//       return element * 2
-//     }
-//     return element;
-//   })
+const doubleAllNumbers = array => {
+  return array.map(number => {
+    if(number > 5) {
+      return number * 2
+    }
 
-//   console.log(array) // [1, 2, 5, 6, 8]
-//   console.log(newArray) // [1, 2, 5, 6, 8]
-// }
+    return number
+  }) 
+}
 
-// console.log(doubleAllNumbers([1, 2, 5, 6, 8]));
+
+
+
+console.log(doubleAllNumbers([1, 2, 5, 6, 8]));
+

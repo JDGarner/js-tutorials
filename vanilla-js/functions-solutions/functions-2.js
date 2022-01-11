@@ -2,13 +2,14 @@
 // and returns a new array containing the same elements but with the 'geese' removed.
 // 'geese' being any strings in the array called geese.
 
-const gooseFilter = (birds) => {
-  const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
-  const allBirdsExceptGeese = birds.filter(bird => !geese.includes(bird))
-  return allBirdsExceptGeese
-};
+const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 
 
+const gooseFilter = birdArray => {
+  return birdArray.filter(bird => {
+    return !geese.includes(bird);
+  })
+}
 
 // Test your function with the following code:
 
@@ -21,4 +22,5 @@ console.log("Result One: ", resultOne);
 const resultTwo = gooseFilter(["Mallard", "Barbary", "Hook Bill", "Blue Swedish", "Crested"]);
 console.log("Result Two: ", resultTwo);
 // Should output: ["Mallard", "Barbary", "Hook Bill", "Blue Swedish", "Crested"]
+
 

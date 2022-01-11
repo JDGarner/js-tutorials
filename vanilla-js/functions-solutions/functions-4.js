@@ -5,13 +5,18 @@
 
 // Can you write the function with just one line of code?
 
-const check = (array, variable) => array.includes(variable)
+const check = (array, value) => {
+  if (array.includes(value)) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 // Check your function with the following code:
 
-console.log(check([1, 2, 3], 3)) // Should output true
-console.log(check([1, 2, 3], 7)) // Should output false
-console.log(check(["ok", "table", "bleep"], "bleep")) // Should output true
-console.log(check(["eggs", "scrambled", "why"], "bleep")) // Should output false
-console.log(check([1, "scrambled", "why"], 1)) // Should output true
-
+console.log(check([1, 2, 3], 3)); // Should output true
+console.log(check([1, 2, 3], 7)); // Should output false
+console.log(check(["ok", "table", "bleep"], "bleep")); // Should output true
+console.log(check(["eggs", "scrambled", "why"], "bleep")); // Should output false
+console.log(check([1, "scrambled", "why"], 1)); // Should output true

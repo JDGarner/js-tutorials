@@ -5,11 +5,15 @@
 // e.g. if ageOne, ageTwo and ageThree are more than 18, return 3
 // if just two of the ages are above 18, return 2. etc
 
-const checkEntryToClubGroupOfThree = (ageOne, ageTwo, ageThree) => {
-  const ages = [ageOne, ageTwo, ageThree];
-  const everyoneAbove18 = ages.filter((age) => age >= 18);
-  return everyoneAbove18.length;
-};
+// const checkEntryToClubGroupOfThree = (ageOne, ageTwo, ageThree) => {
+//   const ages = [ageOne, ageTwo, ageThree];
+//   const everyoneAbove18 = ages.filter(age => {
+//     return age >= 18;
+//   })
+//   return everyoneAbove18.length
+// }
+
+
 
 // Use the following code to check your function:
 // console.log(checkEntryToClubGroupOfThree(15, 30, 16))
@@ -20,10 +24,13 @@ const checkEntryToClubGroupOfThree = (ageOne, ageTwo, ageThree) => {
 // Create a function takes an array of ages as a parameter
 // and returns the number of those ages above 18
 
-const checkEntryToClubWithArray = (array) => {
-  const filterAbove18 = array.filter((age) => age > 18);
-  return filterAbove18.length;
-};
+const checkEntryToClubWithArray = array => {
+  const everyoneAbove18 = array.filter(age => {
+    return age >= 18
+  })
+  return everyoneAbove18.length
+}
+
 
 // Use the following code to check your function:
 console.log(checkEntryToClubWithArray([5, 90, 56, 21, 18, 16, 20]));

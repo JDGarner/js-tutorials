@@ -8,12 +8,14 @@
 //   return element * 2
 // })
 
-const makeAllUppercase = (myArray) => {
-  
-};
+// const makeAllUppercase = (myArray) => {
+//   return myArray.map(item => {
+//     return item.toUpperCase()
+//   })
+// };
 
 // Test your function with the following code:
-console.log(makeAllUppercase(["brave", "nut", "badger"]))
+// console.log(makeAllUppercase(["brave", "nut", "badger"]))
 // Should output => ["BRAVE", "NUT", "BADGER"]
 
 // 1b)
@@ -23,9 +25,11 @@ console.log(makeAllUppercase(["brave", "nut", "badger"]))
 // uppercase separated by a colon, e.g:
 // "brave" should become => "brave:BRAVE"
 
-const addUppercaseString = (myArray) => {
-  
-};
+// const addUppercaseString = (myArray) => {
+//   return myArray.map(item => {
+//     return `${item}:${item.toUpperCase()}`
+//   })
+// };
 
 // Test your function with the following code:
 // console.log(addUppercaseString(["brave", "nut", "badger"]))
@@ -40,9 +44,11 @@ const addUppercaseString = (myArray) => {
 // uppercase AND the length of the string separated by a colon, e.g:
 // "brave" should become => "brave:BRAVE:5"
 
-const addUppercaseStringAndLength = (myArray) => {
-  
-};
+// const addUppercaseStringAndLength = (myArray) => {
+//   return myArray.map(item => {
+//     return `${item}:${item.toUpperCase()}:${item.length}`
+//   }) 
+// };
 
 // Test your function with the following code:
 // console.log(addUppercaseStringAndLength(["brave", "nut", "badger"]))
@@ -61,9 +67,11 @@ const addUppercaseStringAndLength = (myArray) => {
 // all separated by a colon, e.g:
 // "brave" should become => "brave:BRAVE:5:br"
 
-const addUppercaseStringAndLengthAndFirstTwoLetters = (myArray) => {
-  
-};
+// const addUppercaseStringAndLengthAndFirstTwoLetters = (myArray) => {
+//   return myArray.map(item => {
+//     return `${item}:${item.toUpperCase()}:${item.length}:${item.substring(0,2)}`
+//   })
+// };
 
 // Test your function with the following code:
 // console.log(addUppercaseStringAndLengthAndFirstTwoLetters(["brave", "nut", "badger"]))
@@ -85,9 +93,15 @@ const addUppercaseStringAndLengthAndFirstTwoLetters = (myArray) => {
 // "brave" should become => "brave:BRAVE:5:br"
 // "nut" should become => "nut"
 
-const addUppercaseStringAndLengthAndFirstTwoLettersSometimes = (myArray) => {
-  
-};
+// const addUppercaseStringAndLengthAndFirstTwoLettersSometimes = (myArray) => {
+//   return myArray.map(item => {
+//     if(item.length > 4) {
+//       return `${item}:${item.toUpperCase()}:${item.length}:${item.substring(0,2)}`
+//     }
+    
+//     return item
+//   });
+// }
 
 // Test your function with the following code:
 // console.log(addUppercaseStringAndLengthAndFirstTwoLettersSometimes(["brave", "nut", "badger"]))
@@ -111,14 +125,22 @@ const addUppercaseStringAndLengthAndFirstTwoLettersSometimes = (myArray) => {
 // "nut" should become => "nut"
 
 const addUppercaseStringAndLengthAndFirstTwoLettersSometimesWithSeparator = (myArray, separator) => {
-  
+  return myArray.map(item => {
+    if(item.length > 4) {
+      return `${item}${separator}${item.toUpperCase()}${separator}${item.length}${separator}${item.substring(0,2)}`
+    }
+    return item
+  })
 };
+
+
 
 // Test your function with the following code:
 // console.log(addUppercaseStringAndLengthAndFirstTwoLettersSometimesWithSeparator(["brave", "nut", "badger"], "_"))
 // Should output => ["brave_BRAVE_5_br", "nut", "badger_BADGER_6_ba"]
 
-// console.log(addUppercaseStringAndLengthAndFirstTwoLettersSometimesWithSeparator(["brave", "nut", "badger"], "***"))
+
+console.log(addUppercaseStringAndLengthAndFirstTwoLettersSometimesWithSeparator(["brave", "nut", "badger"], "***"))
 // Should output => ["brave***BRAVE***5***br", "nut", "badger***BADGER***6***ba"]
 
 
