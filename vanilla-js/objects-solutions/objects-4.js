@@ -23,7 +23,17 @@ const playerTwo = {
 // Otherwise console.log "Normal Attack"
 // return the new health value of the player
 
-
+const attackPlayerOne = () => {
+  if (Math.random() < 0.2) {
+    console.log("Critical Attack");
+    playerOne.health = playerOne.health - 60;
+    return playerOne.health;
+  } else {
+    console.log("Normal Attack");
+    playerOne.health = playerOne.health - 20;
+    return playerOne.health;
+  }
+};
 
 // Test your function with the following code:
 const remainingHealth = attackPlayerOne();
@@ -40,11 +50,20 @@ console.log('Player one was attacked! Remaining health: ', remainingHealth);
 // console.log the edited player object (still inside the killPlayer function)
 
 const killPlayer = (player) => {
-  
-}
+  if (player.hasResurrectionStone === true) {
+    player.hasResurrectionStone = false
+  } else {
+    player.health = 0
+  }
+};
 
 // Test your function with the following code:
+console.log(playerOne);
 killPlayer(playerOne);
+console.log(playerOne);
+
+console.log(playerTwo);
 killPlayer(playerTwo);
+console.log(playerTwo);
 
 

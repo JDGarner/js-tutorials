@@ -120,7 +120,7 @@ const getLatAndLonAndLogInfo = () => {
 // console.log(getLatAndLonAndLogInfo())
 
 
-// 1f) Write a function called getInfoAboutLatAndLon
+// 1g) Write a function called getInfoAboutLatAndLon
 // if the lat AND lon are more than 40:
 // return the string "More than 40", otherwise return the string "Less than 40"
 // e.g if lat is 67 and lon is 54 it would return "More than 40"

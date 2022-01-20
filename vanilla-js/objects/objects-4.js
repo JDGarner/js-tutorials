@@ -7,12 +7,12 @@ const playerOne = {
   health: 100,
   name: "Kratos",
   hasResurrectionStone: true,
-}
+};
 
 const playerTwo = {
   health: 100,
   name: "Atreus",
-}
+};
 
 // 1a)
 // Write a function called attackPlayerOne
@@ -23,13 +23,10 @@ const playerTwo = {
 // Otherwise console.log "Normal Attack"
 // return the new health value of the player
 
-
-
 // Test your function with the following code:
-const remainingHealth = attackPlayerOne();
-console.log('Player one was attacked! Remaining health: ', remainingHealth);
-
-
+// const remainingHealth = attackPlayerOne();
+// console.log("Player one was attacked! Remaining health: ", remainingHealth);
+// console.log(playerOne);
 
 // 1b)
 // Write a function called killPlayer, that does the following:
@@ -39,12 +36,7 @@ console.log('Player one was attacked! Remaining health: ', remainingHealth);
 // - change the health of the player object to 0
 // console.log the edited player object (still inside the killPlayer function)
 
-const killPlayer = (player) => {
-  
-}
-
 // Test your function with the following code:
+// console.log(playerOne);
 killPlayer(playerOne);
 killPlayer(playerTwo);
-
-

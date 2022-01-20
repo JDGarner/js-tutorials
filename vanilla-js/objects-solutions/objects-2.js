@@ -40,7 +40,7 @@ const filterRecipesByIngredient = () => {
 // console.log(recipesWithGinger);
 
 
-// 1d)
+// 1c)
 // Use Array.find to write a function called findRecipe that takes the name of the
 // recipe as a parameter and returns the recipe object with that name
 // e.g:
