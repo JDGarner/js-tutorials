@@ -1,5 +1,5 @@
-import React from "react";
-import fakeApiCountryData from "./country-data";
+import React from 'react';
+import fakeApiCountryData from './country-data';
 
 const Country = () => {
   const countryData = fakeApiCountryData;
