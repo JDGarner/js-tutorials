@@ -2,7 +2,6 @@ import React from 'react';
 import PlayerInfo from './PlayerInfo';
 
 const PartSix = () => {
-  // Our players have health now!
   const playerOne = {
     firstName: 'Nathan',
     lastName: 'Drake',

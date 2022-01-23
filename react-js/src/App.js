@@ -1,5 +1,5 @@
 import React from 'react';
-import PartOne from './exercises-1/part-6/PartSix';
+import PartOne from './exercises-1/part-1/PartOne';
 
 // Welcome
 // This is our main App component, in here we will just return another
