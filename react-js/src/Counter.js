@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MyComponent = () => {
+const Counter = () => {
   const [buttonClickCount, setButtonClickCount] = useState(0);
 
   const onPlusButtonClicked = () => {
@@ -30,4 +30,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default Counter;

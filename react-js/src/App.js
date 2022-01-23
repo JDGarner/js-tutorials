@@ -1,11 +1,13 @@
 import React from "react";
-import MyComponent from "./MyComponent";
+import Country from "./Country";
+// import Counter from "./Counter";
 
 const App = () => {
   return (
     <div>
       <h1>Hello World</h1>
-      <MyComponent />
+      {/* <Counter /> */}
+      <Country />
     </div>
   );
 };
