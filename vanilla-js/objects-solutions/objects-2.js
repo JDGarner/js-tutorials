@@ -18,7 +18,11 @@ const recipes = [
 // Hint - look back to objects-1 for how create a new object using variables
 
 const addRecipe = (nameOfRecipe, ingredientsArray) => {
-  
+  const newRecipes = {
+    name: nameOfRecipe,
+    ingredients: ingredientsArray,
+  }
+  recipes.push(newRecipes)
 }
 
 // Test your function with the following code:
@@ -31,8 +35,10 @@ console.log(recipes)
 // as a parameter and returns an array of all the recipes in recipes that contain
 // that ingredient
 
-const filterRecipesByIngredient = () => {
-  
+const filterRecipesByIngredient = ingredient => {
+  return recipes.filter(recipe => {
+    return recipe.ingredients.includes(ingredient)
+  })
 }
 
 // Test your function with the following code:

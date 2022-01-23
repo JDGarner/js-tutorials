@@ -17,13 +17,9 @@ const recipes = [
 // creates an object from those parameters and pushes it onto the recipes array
 // Hint - look back to objects-1 for how create a new object using variables
 
-const addRecipe = (nameOfRecipe, ingredientsArray) => {
-  
-}
-
 // Test your function with the following code:
-addRecipe("Tofu Stir Fry", ["Tofu", "Broccoli", "Bell Pepper"])
-console.log(recipes)
+// addRecipe("Tofu Stir Fry", ["Tofu", "Broccoli", "Bell Pepper"])
+// console.log(recipes)
 
 
 // 1b)
@@ -31,13 +27,10 @@ console.log(recipes)
 // as a parameter and returns an array of all the recipes in recipes that contain
 // that ingredient
 
-const filterRecipesByIngredient = () => {
-  
-}
 
 // Test your function with the following code:
-// const recipesWithGinger = filterRecipesByIngredient("Ginger")
-// console.log(recipesWithGinger);
+const recipesWithGinger = filterRecipesByIngredient("Ginger")
+console.log(recipesWithGinger);
 
 
 // 1c)
