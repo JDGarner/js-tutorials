@@ -26,6 +26,7 @@ const PartFour = () => {
         firstName={playerOne.firstName}
         lastName={playerOne.lastName} />
       <PlayerInfo
+        title="Player Two"
         firstName={playerTwo.firstName}
         lastName={playerTwo.lastName} />
     </div>

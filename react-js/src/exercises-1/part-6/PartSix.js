@@ -25,6 +25,11 @@ const PartSix = () => {
   // Don't worry if you're not sure.
   // Scroll down to the bottom of this file to see the answer.
 
+  const onClickAttackPlayerOne = () => {
+    playerOne.health -= 20;
+    console.log(playerOne.health);
+  };
+
   return (
     <div>
       <PlayerInfo

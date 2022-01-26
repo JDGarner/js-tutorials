@@ -16,17 +16,23 @@ const PartEleven = () => {
     <div>
       <h4>Some Animals 1:</h4>
       <div>
-        {/* Animals to be rendered here */}
+        {someAnimals.map((animal) => {
+          return <h5>{animal}</h5>;
+        })}
       </div>
 
       <h4>Some Animals Uppercase:</h4>
       <div>
-        {/* Animals to be rendered here */}
+        {someAnimals.map((animal) => {
+          return <h5>{animal.toUpperCase()}</h5>;
+        })}
       </div>
 
       <h4>Some Animals First Letter:</h4>
       <div>
-        {/* Animals to be rendered here */}
+        {someAnimals.map((animal) => {
+          return <h5>{animal.charAt(0)}</h5>;
+        })}
       </div>
     </div>
   );

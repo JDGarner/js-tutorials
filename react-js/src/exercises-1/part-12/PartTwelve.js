@@ -26,18 +26,22 @@ const PartTwelve = () => {
       <h4>Elements:</h4>
       <div>
         {elements.map((element) => {
-          return <h5>{element.name}</h5>;
+          return <h5 key={element.symbol}>{element.name}</h5>;
         })}
       </div>
 
       <h4>Element Symbols:</h4>
       <div>
-        {/* Elements to be rendered here */}
+        {elements.map((element) => {
+          return <h5 key={element.symbol}>{element.symbol}</h5>;
+        })}
       </div>
 
       <h4>Elements name and symbols:</h4>
       <div>
-        {/* Elements to be rendered here */}
+        {elements.map((element) => {
+          return <h5 key={element.symbol}>{element.name} {element.symbol}</h5>;
+        })}
       </div>
 
       <h4>Elements excluding Carbon:</h4>
@@ -47,18 +51,18 @@ const PartTwelve = () => {
             return null;
           }
 
-          return <h5>{element.name}</h5>;
+          return <h5 key={element.symbol}>{element.name}</h5>;
         })}
       </div>
 
       <h4>Elements excluding Hydrogen AND Lithium:</h4>
       <div>
         {elements.map((element) => {
-          if (element.symbol === 'C') {
+          if (element.symbol === 'H' || element.symbol === 'Li') {
             return null;
           }
 
-          return <h5>{element.name}</h5>;
+          return <h5 key={element.symbol}>{element.name}</h5>;
         })}
       </div>
     </div>

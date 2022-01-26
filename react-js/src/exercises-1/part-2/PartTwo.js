@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerInfo from './PlayerInfo.js';
 
 const PartTwo = () => {
   // Notice how we changed the player object a bit:
@@ -17,8 +18,7 @@ const PartTwo = () => {
 
   return (
     <div>
-      <h2>Player:</h2>
-      <h2>{player.firstName} {player.lastName}</h2>
+      <PlayerInfo firstName={player.firstName} lastName={player.lastName} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { yourCoolData } from './some-data';
+import { yourStoolData } from './some-data';
 
 // TODO:
 // 1 - Create an array of objects containing whatever data you like, something fun
@@ -19,7 +19,26 @@ import { yourCoolData } from './some-data';
 const PartThirteen = () => {
   return (
     <div>
-      <h4>Your cool data:</h4>
+      <h2>Your stool data:</h2>
+      <div>
+        {yourStoolData.map((element) => {
+          if (element.diagnosis === 'mild diarrhea' || element.diagnosis === 'severe diarrhea') {
+            return (
+              <div>
+                <h3>Poop type: {element.poopType}</h3>
+                <h4>Diagnosis: you are fucked!</h4>
+              </div>
+            );
+          }
+
+          return (
+            <div>
+              <h3>Poop type: {element.poopType}</h3>
+              <h4>Diagnosis: {element.diagnosis}</h4>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

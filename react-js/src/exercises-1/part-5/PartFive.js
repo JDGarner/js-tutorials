@@ -26,11 +26,13 @@ const PartFive = () => {
       <PlayerInfo
         title="Player One"
         firstName={playerOne.firstName}
-        lastName={playerOne.lastName} />
+        lastName={playerOne.lastName}
+        health={playerOne.health} />
       <PlayerInfo
         title="Player Two"
         firstName={playerTwo.firstName}
-        lastName={playerTwo.lastName} />
+        lastName={playerTwo.lastName}
+        health={playerTwo.health} />
     </div>
   );
 };

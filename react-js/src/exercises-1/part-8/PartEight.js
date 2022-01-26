@@ -8,11 +8,11 @@ const PartEight = () => {
     health: 100,
   });
 
-  const playerTwo = {
+  const [playerTwo, setPlayerTwo] = useState({
     firstName: 'Samuel',
     lastName: 'Drake',
     health: 80,
-  };
+  });
 
   // TODO:
   // 1 - Move playerTwo into React state like we did with playerOne
@@ -30,6 +30,15 @@ const PartEight = () => {
     setPlayerOne(updatedPlayerOne);
   };
 
+  const onClickAttackPlayerTwo = () => {
+    const updatePlayerTwo = {
+      ...playerTwo,
+      health: playerTwo.health - 20,
+    };
+
+    setPlayerTwo(updatePlayerTwo);
+  };
+
   return (
     <div>
       <PlayerInfo
@@ -44,6 +53,9 @@ const PartEight = () => {
         health={playerTwo.health} />
       <button onClick={onClickAttackPlayerOne} type="button">
         Attack Player One
+      </button>
+      <button onClick={onClickAttackPlayerTwo} type="button">
+        Attack Player Two
       </button>
     </div>
   );
