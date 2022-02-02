@@ -1,4 +1,5 @@
 import React from 'react';
+import Element from './Element';
 import { elements } from './some-data';
 
 // Take a look at our new elements jsx/markup (can refer to jsx and markup, both
@@ -19,10 +20,10 @@ const PartNineteen = () => {
       <div>
         {elements.map((element) => {
           return (
-            <div key={element.symbol}>
-              <h5>Element: {element.name}</h5>
-              <h6>Symbol: {element.symbol}</h6>
-            </div>
+            <Element
+              key={element.symbol}
+              name={element.name}
+              symbol={element.symbol} />
           );
         })}
       </div>

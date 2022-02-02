@@ -35,12 +35,16 @@ const PartEighteen = () => {
 
       <h4>Element Symbols:</h4>
       <div>
-        {/* Elements to be rendered here */}
+        {elements.map((element) => {
+          return <h5>{element.symbol}</h5>;
+        })}
       </div>
 
       <h4>Elements name and symbols:</h4>
       <div>
-        {/* Elements to be rendered here */}
+        {elements.map((element) => {
+          return <h5>Element: {element.name}, Symbol: {element.symbol}</h5>;
+        })}
       </div>
 
       <h4>Elements excluding Carbon:</h4>
@@ -57,7 +61,7 @@ const PartEighteen = () => {
       <h4>Elements excluding Hydrogen AND Lithium:</h4>
       <div>
         {elements.map((element) => {
-          if (element.symbol === 'C') {
+          if (element.symbol === 'H' || element.symbol === 'Li') {
             return null;
           }
 

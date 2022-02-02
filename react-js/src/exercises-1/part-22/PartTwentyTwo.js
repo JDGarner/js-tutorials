@@ -16,11 +16,24 @@ import React, { useState } from 'react';
 
 const PartTwentyTwo = () => {
   const [myText, setMyText] = useState('Hello');
+  const onChangeInput = (event) => {
+    setMyText(event.target.value);
+  };
+
+  const onClickAddPoop = () => {
+    setMyText(`${myText} poop`);
+  };
+
+  const onClickClear = () => {
+    setMyText('');
+  };
 
   return (
     <div>
       <h5>My Text: {myText}</h5>
-      {/* Your input here */}
+      <input onChange={onChangeInput} value={myText} type="text" />
+      <button onClick={onClickAddPoop} type="button">Add poop!</button>
+      <button onClick={onClickClear} type="button">Clear</button>
     </div>
   );
 };

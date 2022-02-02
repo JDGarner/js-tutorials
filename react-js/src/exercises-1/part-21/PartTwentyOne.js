@@ -8,12 +8,22 @@ import React, { useState } from 'react';
 // 3 - Render the age and dogAge variables so you can see them update
 
 const PartTwentyOne = () => {
-  const [age, setAge] = useState(0);
-  const [dogAge, setDogAge] = useState(0);
+  const [age, setAge] = useState(26);
+  const [dogAge, setDogAge] = useState(1);
+
+  const onClickIncreaseAge = () => {
+    const newAge = age + 1;
+    const newDogAge = dogAge + 7;
+
+    setAge(newAge);
+    setDogAge(newDogAge);
+  };
 
   return (
     <div>
-      {/* Your buttons here */}
+      <h5>Hooman age: {age}</h5>
+      <h5>Dog age: {dogAge}</h5>
+      <button onClick={onClickIncreaseAge} type="button">Increase age</button>
     </div>
   );
 };

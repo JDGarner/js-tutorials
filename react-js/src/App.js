@@ -1,5 +1,5 @@
 import React from 'react';
-import PartSixteen from './exercises-1/part-16/PartSixteen';
+import PartTwentySix from './exercises-1/part-26/PartTwentySix';
 
 // Welcome
 // This is our main App component, in here we will just return another
@@ -8,7 +8,7 @@ import PartSixteen from './exercises-1/part-16/PartSixteen';
 // PartOne, change this component to import and render PartTwo instead, and so on :)
 
 const App = () => {
-  return <PartSixteen />;
+  return <PartTwentySix />;
 };
 
 export default App;

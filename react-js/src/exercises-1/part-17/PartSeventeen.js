@@ -17,6 +17,12 @@ import React, { useState } from 'react';
 const PartSeventeen = () => {
   const [age, setAge] = useState(12);
 
+  const onClickBirthdayButton = () => {
+    const newAge = age + 1;
+
+    setAge(newAge);
+  };
+
   return (
     <div>
       <h5>Age: {age}</h5>
@@ -36,7 +42,22 @@ const PartSeventeen = () => {
         : null
       }
 
-      {/* Add your own messages here */}
+      {age === 26
+        ? <h5>It's all going downhill from here</h5>
+        : null
+      }
+
+      {age === 30
+        ? <h5>Family dinner: whY sTIll nOt PrEgNant?</h5>
+        : null
+      }
+
+      {age === 35
+        ? <h5>Your strong use of cocaine during youth is starting to get you</h5>
+        : null
+      }
+
+      <button onClick={onClickBirthdayButton} type="button">Celebrate Birthday</button>
     </div>
   );
 };

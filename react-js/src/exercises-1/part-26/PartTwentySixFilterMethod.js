@@ -12,8 +12,6 @@ import SenatorsList from './SenatorsList';
 // where you can access the name property in each senator object)
 
 const PartTwentyFive = () => {
-  const [republicansHidden, setRepublicansHidden] = useState(false);
-  const [democratsHidden, setDemocratsHidden] = useState(false);
   const [senators, setSenators] = useState([]);
 
   useEffect(() => {
@@ -28,37 +26,17 @@ const PartTwentyFive = () => {
   }, []);
 
   const onClickHideRepublican = () => {
-    setRepublicansHidden(true);
-  };
-
-  const onClickShowRepublican = () => {
-    setRepublicansHidden(false);
-  };
-
-  const onClickHideDemocrat = () => {
-    setDemocratsHidden(true);
-  };
-
-  const onClickShowDemocrat = () => {
-    setDemocratsHidden(false);
+    const newSenators = senators.filter((senator) => {
+      return senator.party === 'Democrat';
+    });
+    setSenators(newSenators);
   };
 
   return (
     <div>
-      <button onClick={onClickHideRepublican} type="button">Hide Republicans</button>
-      <button onClick={onClickShowRepublican} type="button">Show Republicans</button>
-      <button onClick={onClickHideDemocrat} type="button">Hide Democrats</button>
-      <button onClick={onClickShowDemocrat} type="button">Show Democrats</button>
+      <button onClick={onClickHideRepublican} type="submit">Hide Republicans!</button>
       <h2>Senators:</h2>
       {senators.map((senator) => {
-        if (republicansHidden && senator.party === 'Republican') {
-          return null;
-        }
-
-        if (democratsHidden && senator.party === 'Democrat') {
-          return null;
-        }
-
         return (
           <SenatorsList
             key={senator.phone}
