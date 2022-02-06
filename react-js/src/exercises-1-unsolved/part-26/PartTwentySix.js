@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 // for each senator with their name in it (look in the console.log data to find
 // where you can access the name property in each senator object)
 
-const PartTwentyFive = () => {
+const PartTwentySix = () => {
   useEffect(() => {
     fetch('http://localhost:3000/senators')
       .then((response) => {
@@ -30,4 +30,4 @@ const PartTwentyFive = () => {
   );
 };
 
-export default PartTwentyFive;
+export default PartTwentySix;

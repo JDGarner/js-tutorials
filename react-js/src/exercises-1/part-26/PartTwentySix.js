@@ -11,7 +11,7 @@ import SenatorsList from './SenatorsList';
 // for each senator with their name in it (look in the console.log data to find
 // where you can access the name property in each senator object)
 
-const PartTwentyFive = () => {
+const PartTwentySix = () => {
   const [republicansHidden, setRepublicansHidden] = useState(false);
   const [democratsHidden, setDemocratsHidden] = useState(false);
   const [senators, setSenators] = useState([]);
@@ -73,4 +73,4 @@ const PartTwentyFive = () => {
   );
 };
 
-export default PartTwentyFive;
+export default PartTwentySix;

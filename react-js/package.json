@@ -7,6 +7,7 @@
   "scripts": {
     "start": "webpack serve --hot --open --mode development",
     "start-server": "json-server --watch data/senators-db.json",
+    "start-server-countries": "json-server --watch data/countries-db.json",
     "build": "webpack --config webpack.config.js --mode production"
   },
   "dependencies": {

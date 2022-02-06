@@ -1,0 +1,13 @@
+Next steps for part 27:
+
+1) - Extract the name and capital elements into their own component called Country
+
+2) - Display the 'emoji' property of the country data next to the country name
+
+3) - Add a button that when clicked, makes it so only countries that start
+with the letter 'L' are shown
+
+4) - Add another button that when clicked, makes it so all countries are showing
+again
+
+5) - Add an input element... to be continued
