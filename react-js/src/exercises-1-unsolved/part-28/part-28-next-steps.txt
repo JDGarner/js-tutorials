@@ -1,0 +1,21 @@
+Next steps for part 28:
+
+1) - At the moment, our password is showing in plain text,
+google how to hide text input for password in html to get it so we can hide our password
+
+2) - Add another state variable called isSignedIn, set the initial value to false
+
+3) - Add another state variable called error, set the initial value to null
+
+4) - In the onClickSignedIn function:
+      - If the username is 'Felcraft' and password is 'creamy', then:
+        - set isSignedIn to true
+      - Else:
+        - set error to 'Invalid username or password'
+
+
+5) - If the the user is signed in, display a message saying 'Welcome Felcraft!'
+
+6) - If there is an error, display that error in an h5 element below your submit button
+
+7) - Consult me for next steps :)
