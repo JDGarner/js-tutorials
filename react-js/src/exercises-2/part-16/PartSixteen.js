@@ -16,10 +16,17 @@ import React, { useState } from 'react';
 
 const PartSixteen = () => {
   const [coinFlipResult, setCoinFlipResult] = useState('');
+  const onClickFlipCoin = () => {
+    if (Math.random() < 0.5) {
+      setCoinFlipResult('Heads');
+    } else {
+      setCoinFlipResult('Tails');
+    }
+  };
 
   return (
     <div>
-      {/* Your button here */}
+      <button type="button" onClick={onClickFlipCoin}>Flip Coin</button>
 
       {coinFlipResult === 'Heads'
         ? <h5>Heads!!!</h5>

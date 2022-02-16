@@ -11,8 +11,51 @@
 //     Capital: Kabul
 // 3 - look into part-27-next-steps.txt for further tasks
 
-const PartTwentySeven = () => {
+import React, { useEffect, useState } from 'react';
+import Country from './Country';
 
+const PartTwentySeven = () => {
+  const [countries, setCountries] = useState([]);
+  const [showOnlyCountriesWithL, setShowOnlyCountriesWithL] = useState(false);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/countries')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setCountries(data);
+        console.log('>>>>data:', data);
+      });
+  }, []);
+
+  const onClickShowCountriesWithL = () => {
+    setShowOnlyCountriesWithL(true);
+  };
+
+  const onClickShowAllCountries = () => {
+    setShowOnlyCountriesWithL(false);
+  };
+
+  return (
+    <div>
+      <h1>Countries List</h1>
+      <button type="button" onClick={onClickShowCountriesWithL}>Show countries with L</button>
+      <button type="button" onClick={onClickShowAllCountries}>Show all countries</button>
+      {countries.map((country) => {
+        if (!country.name.startsWith('L') && showOnlyCountriesWithL === true) {
+          return null;
+        }
+
+        return (
+          <Country
+            key={country.name}
+            name={`${country.name} ${country.emoji}`}
+            capital={country.capital} />
+        );
+      })}
+    </div>
+  );
 };
 
 export default PartTwentySeven;

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import Senator from './Senator';
 
 // TODO:
 // 1 - Add a state variable called senators using useState
@@ -11,23 +12,67 @@ import React, { useEffect } from 'react';
 // where you can access the name property in each senator object)
 
 const PartTwentySix = () => {
+  const [senators, setSenators] = useState([]);
+  const [democratsHidden, setDemocratsHidden] = useState(false);
+  const [republicansHidden, setRepublicansHidden] = useState(false);
+
   useEffect(() => {
     fetch('http://localhost:3000/senators')
       .then((response) => {
         return response.json();
       })
       .then((data) => {
+        setSenators(data);
         console.log('>>> data: ', data);
       });
   }, []);
 
+  const onClickHideDemocrat = () => {
+    setDemocratsHidden(true);
+  };
+
+  const onClickHideRepublican = () => {
+    setRepublicansHidden(true);
+  };
+
+  const onClickShowDemocrat = () => {
+    setDemocratsHidden(false);
+  };
+
+  const onClickShowRepublican = () => {
+    setRepublicansHidden(false);
+  };
+
   return (
     <div>
-      <h5>Senators:</h5>
+      <button type="button" onClick={onClickHideDemocrat}>Hide Democrats</button>
+      <button type="button" onClick={onClickShowDemocrat}>Show Democrats</button>
+      <button type="button" onClick={onClickHideRepublican}>Hide Republicans</button>
+      <button type="button" onClick={onClickShowRepublican}>Show Republicans</button>
+      <h1>Senators:</h1>
+      {senators.map((senator) => {
+        if (democratsHidden === true && senator.party === 'Democrat') {
+          return null;
+        }
 
-      {/* Render senators here */}
+        if (republicansHidden === true && senator.party === 'Republican') {
+          return null;
+        }
+
+        return (
+          <Senator
+            key={senator.description}
+            name={`${senator.person.firstname} ${senator.person.lastname}`}
+            description={senator.description}
+            party={senator.party}
+            birthday={senator.person.birthday} />
+        );
+      })}
     </div>
   );
 };
 
 export default PartTwentySix;
+
+// button: show democrats, hide democrats
+// button: show republicans, hide republicans

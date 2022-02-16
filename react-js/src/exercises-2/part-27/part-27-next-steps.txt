@@ -10,4 +10,9 @@ with the letter 'L' are shown
 4) - Add another button that when clicked, makes it so all countries are showing
 again
 
-5) - Add an input element... to be continued
+5) - Add an input element
+      - store the value of what you type in here in a state variable
+      - hide any country that doesn't contain in it's name the value that you typed
+            (or another way to say this - Only show countries that in their name include the value of that input)
+
+

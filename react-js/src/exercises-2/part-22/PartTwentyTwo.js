@@ -16,11 +16,14 @@ import React, { useState } from 'react';
 
 const PartTwentyTwo = () => {
   const [myText, setMyText] = useState('Hello');
+  const onChangeInput = (event) => {
+    setMyText(event.target.value);
+  };
 
   return (
     <div>
       <h5>My Text: {myText}</h5>
-      {/* Your input here */}
+      <input type="text" onChange={onChangeInput} value={myText} />
     </div>
   );
 };

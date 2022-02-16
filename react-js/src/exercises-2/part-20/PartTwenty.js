@@ -22,7 +22,8 @@ const PartTwenty = () => {
           return (
             <Element
               name={element.name}
-              symbol={element.symbol} />
+              symbol={element.symbol}
+              description={element.description} />
           );
         })}
       </div>

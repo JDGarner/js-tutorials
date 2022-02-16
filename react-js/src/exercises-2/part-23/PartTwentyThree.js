@@ -14,8 +14,8 @@ const PartTwentyThree = () => {
   const [myText, setMyText] = useState('Hello');
 
   useEffect(() => {
-    // console.log
-  }, []);
+    console.log("Hello")
+  }, [myText]);
 
   const onChangeInput = (event) => {
     setMyText(event.target.value);

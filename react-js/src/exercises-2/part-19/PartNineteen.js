@@ -1,5 +1,6 @@
 import React from 'react';
 import { elements } from './some-data';
+import Element from './Element';
 
 // Take a look at our new elements jsx/markup (can refer to jsx and markup, both
 // just mean the html inside react components)
@@ -19,10 +20,11 @@ const PartNineteen = () => {
       <div>
         {elements.map((element) => {
           return (
-            <div key={element.symbol}>
-              <h5>Element: {element.name}</h5>
-              <h6>Symbol: {element.symbol}</h6>
-            </div>
+            <Element
+              key={element.symbol}
+              element={element.name}
+              symbol={element.symbol} />
+
           );
         })}
       </div>

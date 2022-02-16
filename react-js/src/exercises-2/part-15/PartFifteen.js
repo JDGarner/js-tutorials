@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Movie from './Movie';
 
 // TODO:
 // 1 - In the PartFifteen component, render a list of movies which each have
@@ -13,11 +14,57 @@ import React from 'react';
 // Add a button into the Movie component, that when clicked calls onClickDeleteMovie
 
 const PartFifteen = () => {
-  // Your state/functions here
+  const [movies, setMovies] = useState([
+    {
+      title: 'The Dark Knight',
+      rating: 9,
+    },
+    { title: 'Parasite',
+      rating: 8.5,
+
+    },
+    {
+      title: 'Into the Wild',
+      rating: 8,
+    },
+    {
+      title: 'Saving Christmas',
+      rating: 2.1,
+    },
+    {
+      title: '365 Days',
+      rating: 3,
+    },
+    {
+      title: 'Clifford The Big Red Dog',
+      rating: 6,
+    },
+    {
+      title: 'The Kissing Boot',
+      rating: 6.5,
+    },
+  ]);
+
+  const onClickDeleteMovie = (title) => {
+    const newMovies = movies.filter((movie) => {
+      return movie.title !== title;
+    });
+
+    setMovies(newMovies);
+  };
 
   return (
     <div>
-      {/* Your JSX here */}
+      <h1>My movie blog</h1>
+      {movies.map((movie) => {
+        return (
+          <Movie
+            key={movie.title}
+            title={movie.title}
+            rating={movie.rating}
+            onClickDeleteMovie={onClickDeleteMovie} />
+        );
+      })}
     </div>
   );
 };

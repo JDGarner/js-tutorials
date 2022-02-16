@@ -11,9 +11,19 @@ const PartTwentyOne = () => {
   const [age, setAge] = useState(0);
   const [dogAge, setDogAge] = useState(0);
 
+  const onClickIncreaseAge = () => {
+    const newAge = age + 1;
+    const newDogAge = dogAge + 7;
+
+    setAge(newAge);
+    setDogAge(newDogAge);
+  };
+
   return (
     <div>
-      {/* Your buttons here */}
+      <h5>Human age: {age}</h5>
+      <h5>Dog age: {dogAge}</h5>
+      <button type="button" onClick={onClickIncreaseAge}>Increase age</button>
     </div>
   );
 };
