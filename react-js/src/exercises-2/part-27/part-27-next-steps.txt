@@ -16,3 +16,39 @@ again
             (or another way to say this - Only show countries that in their name include the value of that input)
 
 
+6) - Add a button that shows up next to each country, with the text 'Select'
+   - When this button is clicked, set the country that is selected as a state variable
+   - Display this country next to the countries list, with the title 'My Country: '
+
+
+7) - Add a button that shows up next to each country, with the text 'Add to favourites'
+   - When this button is clicked, add that countries to a favouriteCountries array that is a state variable
+   - If there are any countries in the favouriteCountries array, render them all out
+      (below My Country but above Countries List)
+
+
+
+Options:
+1 - Make it so the search is case insensitive (e.g. I can search united k and it will show United Kingdom)
+
+1.5 - Rename onClickSelectMyFavouriteCountries to onClickAddCountryToFavourites as this is a more accurate name
+      for what the function is doing
+
+2 - Instead of rendering new divs for the 'my country' and the 'favourite countries',
+    render the <Country component that you already made.
+    The difference with these is that you don't want the buttons to show ('Select Country' and 'Add to favourites')
+    To do this:
+    - Don't pass in the functions onClickSelectMyCountry and onClickSelectMyFavouriteCountries
+    - Then inside the function use a ternery statement to check if the function is passed in then show the button
+      otherwise just show null
+
+4 - if a country is in the favourites list, dont show it in the countries list
+
+5 - Button to remove favourites
+
+To do:
+__________________
+
+3 - Add a button to the top of the page, with the text 'Show more info'
+  - When clicked, there will be extra info/data shown about the 'My Country' country
+      
