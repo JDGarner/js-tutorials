@@ -1,13 +1,37 @@
 Next steps for part 27:
 
-1) - Extract the name and capital elements into their own component called Country
+1) - Add an input element
+      - store the value of what you type in here in a state variable
+      - hide any country that doesn't contain in it's name the value that you typed
+          (or another way to say this - Only show countries that in their name include the value of that input)
 
-2) - Display the 'emoji' property of the country data next to the country name
+1.5) - Make it so the search is case insensitive
+      (e.g. I can search united k and it will show United Kingdom)
 
-3) - Add a button that when clicked, makes it so only countries that start
-with the letter 'L' are shown
 
-4) - Add another button that when clicked, makes it so all countries are showing
-again
+2) - Add a button that shows up next to each country, with the text 'Select'
+   - When this button is clicked, set the country that is selected as a state variable
+   - Display this country next to the countries list, with the title 'My Country: '
 
-5) - Add an input element... to be continued
+
+3) - Add a button that shows up next to each country, with the text 'Add to favourites'
+   - When this button is clicked, add that countries to a favouriteCountries array that is a state variable
+   - If there are any countries in the favouriteCountries array, render them all out
+      (below My Country but above Countries List)
+
+
+4) - if a country is in the favourites list, dont show it in the countries list
+
+
+5) - Add a button with the text 'Remove from favourites'.
+   - Make it so this button just shows next to favourited countries
+   - When clicked, update the favouritesList to remove the country that was clicked from the list
+
+
+
+To do next time:
+__________________
+
+1 - Add a button to the top of the page, with the text 'Show more info'
+  - When clicked, there will be extra info/data shown about the 'My Country' country
+      
