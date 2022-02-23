@@ -9,6 +9,7 @@ import Country from './Country';
 const PartTwentySeven = () => {
   const [countries, setCountries] = useState([]);
   const [showOnlyCountriesWithL, setShowOnlyCountriesWithL] = useState(false);
+  const [inputText, setInputText] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/countries')
@@ -29,6 +30,10 @@ const PartTwentySeven = () => {
     setShowOnlyCountriesWithL(false);
   };
 
+  const onChangeInput = (event) => {
+    setInputText(event.target.value);
+  };
+
   return (
     <div>
       {/* <h1>My Country</h1> */}
@@ -38,9 +43,10 @@ const PartTwentySeven = () => {
       {/* TODO: render favourite countries */}
 
       <h1>Countries List</h1>
+      <input type="text" onChange={onChangeInput} value={inputText} />
       <button type="button" onClick={onClickShowCountriesWithL}>Show countries with L</button>
       <button type="button" onClick={onClickShowAllCountries}>Show all countries</button>
-      {countries.map((country) => {
+      {countries.map((country) => {  
         if (!country.name.startsWith('L') && showOnlyCountriesWithL) {
           return null;
         }

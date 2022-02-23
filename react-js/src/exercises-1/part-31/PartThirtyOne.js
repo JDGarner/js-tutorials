@@ -35,11 +35,9 @@ const PartThirtyOne = () => {
     <div>
       <h1>Countries List</h1>
       {countries.map((country) => {
-        if (country.name === 'Albania') {
+        if (!country.name.toLowerCase().includes('an')) {
           return null;
         }
-
-        // Add logic here for parts 2, 3 and 4
 
         return (
           <Country

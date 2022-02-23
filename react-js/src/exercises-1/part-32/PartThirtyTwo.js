@@ -12,6 +12,7 @@ import Country from './Country';
 
 const PartThirtyTwo = () => {
   const [countries, setCountries] = useState([]);
+  const [inputText, setInputText] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/countries')
@@ -24,14 +25,16 @@ const PartThirtyTwo = () => {
       });
   }, []);
 
-  // Add onChangeInputText function here
+  const onChangeInputText = (event) => {
+    setInputText(event.target.value);
+  };
 
   return (
     <div>
       <h1>Countries List</h1>
-      {/* Add input element here */}
+      <input type="text" onChange={onChangeInputText} value={inputText} />
       {countries.map((country) => {
-        if (!country.name.toLowerCase().includes('an')) {
+        if (!country.name.toLowerCase().includes(inputText.toLowerCase())) {
           return null;
         }
 

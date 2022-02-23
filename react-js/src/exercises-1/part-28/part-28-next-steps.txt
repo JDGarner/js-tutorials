@@ -19,3 +19,4 @@ google how to hide text input for password in html to get it so we can hide our 
 6) - If there is an error, display that error in an h5 element below your submit button
 
 7) - Consult me for next steps :)
+

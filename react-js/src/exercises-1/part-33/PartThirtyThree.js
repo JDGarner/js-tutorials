@@ -28,6 +28,7 @@ import Country from './Country';
 const PartThirtyThree = () => {
   const [countries, setCountries] = useState([]);
   const [inputText, setInputText] = useState('');
+  const [myCountry, setMyCountry] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:3000/countries')
@@ -44,14 +45,23 @@ const PartThirtyThree = () => {
     setInputText(event.target.value);
   };
 
-  // Add onClickSelectCountry function here
+  const onClickSelectCountry = (country) => {
+    setMyCountry(country);
+  };
 
   return (
     <div>
       <h1>Countries List</h1>
+      <h1>My Country</h1>
+      {myCountry
+        ? (
+          <Country
+            name={`${myCountry.name} ${myCountry.emoji}`}
+            capital={myCountry.capital} />
+        )
+        : null
+    }
       <input type="text" onChange={onChangeInputText} value={inputText} />
-
-      {/* My country to be displayed here */}
 
       {countries.map((country) => {
         if (!country.name.toLowerCase().includes(inputText)) {
@@ -62,7 +72,8 @@ const PartThirtyThree = () => {
           <Country
             key={country.name}
             name={`${country.name} ${country.emoji}`}
-            capital={country.capital} />
+            capital={country.capital}
+            onClickSelectCountry={() => onClickSelectCountry(country)} />
         );
       })}
     </div>

@@ -23,8 +23,9 @@ const PartThirty = () => {
     <div>
       <h1>Countries List</h1>
       {countries.map((country) => {
-        // Add some logic here to make it so if the country's name is Albania
-        // we don't show it
+        if (country.name === 'Albania') {
+          return null;
+        }
 
         return (
           <Country

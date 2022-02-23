@@ -6,6 +6,7 @@
 //     to see what props you need to give it
 
 import React, { useEffect, useState } from 'react';
+import Country from './Country';
 
 const PartTwentyNine = () => {
   const [countries, setCountries] = useState([]);
@@ -24,7 +25,14 @@ const PartTwentyNine = () => {
   return (
     <div>
       <h1>Countries List</h1>
-      {/* Map through countries and render them here */}
+      {countries.map((country) => {
+        return (
+          <Country
+            key={country.name}
+            name={country.name}
+            capital={country.capital} />
+        );
+      })}
     </div>
   );
 };
