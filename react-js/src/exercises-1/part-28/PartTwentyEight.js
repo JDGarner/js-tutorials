@@ -1,46 +1,27 @@
 import React, { useState } from 'react';
+import ForgotMyPassword from './ForgotMyPassword';
+import Homepage from './Homepage';
+import SignInPage from './SignInPage';
+import Registration from './Registration';
+import RegistrationForm from './RegistrationForm';
 
 // TODO:
-// Add a button 'Back' on the forgot my password section, that takes you back to the sign in section
-// If you haven't put any text in the password input, don't show the 'Show Password' button
+// Add a users state variable that is an empty array to start off with
+// When you click on Submit on the registration form
+// add that user object (an object that includes the username and password) to the users array
+// Hint, you will need to use the ... operator (the spread or rest operator)
+// and it will take you back to the login page
+
+// You will have to change the sign in function to make it so it checks does that username and password
+// exist in the users array (hint you can't use .includes to check if an object exists in an array of objects...)
+
+// You will also have to change the welcome page
 
 const PartTwentyEight = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [incorrectLoginAttempts, setIncorrectLoginAttempts] = useState(0);
-  const [clickedForgotMyPassword, setClickedForgotMyPassword] = useState(false);
-
-  const onChangeUsername = (event) => {
-    setUsername(event.target.value);
-    console.log(username);
-  };
-
-  const onChangePassword = (event) => {
-    setPassword(event.target.value);
-    console.log(password);
-  };
-
-  const onClickSignIn = () => {
-    console.log(`username: ${username} password: ${password}`);
-    if (username === 'Felcraft' && password === 'creamy') {
-      setIsSignedIn(true);
-      setUsername('');
-      setPassword('');
-      setError('');
-    } else {
-      const newIncorrectLoginAttempt = incorrectLoginAttempts + 1;
-
-      setIncorrectLoginAttempts(newIncorrectLoginAttempt);
-      if (incorrectLoginAttempts < 3) {
-        setError('Invalid username or password');
-      } else {
-        setError('Too many incorrect login attempts. Your account is locked for 5 minutes.');
-      }
-    }
-  };
+  const [showForgotMyPassword, setShowForgotMyPassword] = useState(false);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
 
   const onClickToggleShowPassword = () => {
     // if showPassword is true, we want to set it to false
@@ -55,49 +36,71 @@ const PartTwentyEight = () => {
     setShowPassword(!showPassword);
   };
 
-  const passwordInputType = showPassword ? 'text' : 'password';
-
-  const toggleShowPasswordText = showPassword ? 'Hide password' : 'Show password';
+  const onSignInSuccess = () => {
+    setIsSignedIn(true);
+  };
 
   const onClickLogOut = () => {
     setIsSignedIn(false);
   };
 
-  const onClickResetPassword = () => {
-    setClickedForgotMyPassword(true);
+  const onClickForgotMyPassword = () => {
+    setShowForgotMyPassword(true);
+  };
+
+  const onClickBackToLoginPage = () => {
+    setShowForgotMyPassword(false);
+    setShowRegistrationForm(false);
+  };
+
+  const onClickRegistrationForm = () => {
+    setShowRegistrationForm(true);
   };
 
   if (!isSignedIn) {
-    if (clickedForgotMyPassword) {
+    if (showForgotMyPassword) {
       return (
-        <div>
-          <h5>Enter your e-mail to reset password</h5>
-          <input type="text" />
-          <button type="button">Submit</button>
-        </div>
+        <ForgotMyPassword
+          onClickBackToLoginPage={onClickBackToLoginPage} />
+      );
+    }
+
+    if (showRegistrationForm) {
+      return (
+        <RegistrationForm
+          showRegistrationForm={showRegistrationForm}
+          onClickBackToLoginPage={onClickBackToLoginPage} />
       );
     }
 
     return (
       <div>
-        <h4>Enter your username and password to sign in</h4>
-        <input type="text" onChange={onChangeUsername} value={username} />
-        <input type={passwordInputType} onChange={onChangePassword} value={password} />
-        <button type="button" onClick={onClickSignIn}>Sign In</button>
-        <button type="button" onClick={onClickToggleShowPassword}>{toggleShowPasswordText}</button>
-        <button type="button" onClick={onClickResetPassword}>Forgot password</button>
-        <h5>{error}</h5>
+        <SignInPage
+          showPassword={showPassword}
+          onClickToggleShowPassword={onClickToggleShowPassword}
+          onClickForgotMyPassword={onClickForgotMyPassword}
+          onSignInSuccess={onSignInSuccess} />
+        <Registration
+          onClickRegistrationForm={onClickRegistrationForm} />
       </div>
+
     );
   }
 
   return (
-    <div>
-      <h5>Welcome Felcraft!</h5>
-      <button type="button" onClick={onClickLogOut}>Log out</button>
-    </div>
-
+    <Homepage
+      onClickLogOut={onClickLogOut} />
   );
 };
 
 export default PartTwentyEight;
+
+// Ideas for future tasks:
+// - On welcome page, have an account settings section with
+// a change password functionality
+
+// - If you're inactive on the page for X seconds, it logs you out and sends
+// you to a 'You have been logged out' section, with a button to go back to sign in page
+
+// - Make it so, you cannot register again with the same email
+// show a message if someone tries to do this
