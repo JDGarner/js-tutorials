@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-const RegistrationForm = ({ showRegistrationForm, onClickBackToLoginPage }) => {
+const RegistrationForm = ({ showRegistrationForm, onClickBackToLoginPage, onClickRegister }) => {
   const [newPassword, setNewPassword] = useState('');
+  const [newUsername, setNewUsername] = useState('');
   const [newPasswordRepeat, setNewPasswordRepeat] = useState('');
 
   const onChangePasswordRegForm = (event) => {
@@ -10,6 +11,10 @@ const RegistrationForm = ({ showRegistrationForm, onClickBackToLoginPage }) => {
 
   const onChangePasswordRepeatRegForm = (event) => {
     setNewPasswordRepeat(event.target.value);
+  };
+
+  const onChangeUsernameRegForm = (event) => {
+    setNewUsername(event.target.value);
   };
 
   const doesContainNumber = () => {
@@ -34,8 +39,8 @@ const RegistrationForm = ({ showRegistrationForm, onClickBackToLoginPage }) => {
               <input type="text" />
             </div>
             <div>
-              <h5>E-mail address</h5>
-              <input type="text" />
+              <h5>Username</h5>
+              <input type="text" onChange={onChangeUsernameRegForm} value={newUsername} />
             </div>
             <div>
               <h5>Password (min. 8 characters, 1 number and 1 special character &%.!?/* )</h5>
@@ -56,7 +61,7 @@ const RegistrationForm = ({ showRegistrationForm, onClickBackToLoginPage }) => {
             <div>
               <h5>Repeat password</h5>
               <input type="text" onChange={onChangePasswordRepeatRegForm} value={newPasswordRepeat} />
-              <button type="button">Submit</button>
+              <button type="button" onClick={() => onClickRegister(newUsername, newPassword)}>Submit</button>
               <button type="button" onClick={onClickBackToLoginPage}>Back</button>
             </div>
           </div>

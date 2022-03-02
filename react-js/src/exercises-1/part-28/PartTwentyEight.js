@@ -5,24 +5,13 @@ import SignInPage from './SignInPage';
 import Registration from './Registration';
 import RegistrationForm from './RegistrationForm';
 
-// TODO:
-// Add a users state variable that is an empty array to start off with
-// When you click on Submit on the registration form
-// add that user object (an object that includes the username and password) to the users array
-// Hint, you will need to use the ... operator (the spread or rest operator)
-// and it will take you back to the login page
-
-// You will have to change the sign in function to make it so it checks does that username and password
-// exist in the users array (hint you can't use .includes to check if an object exists in an array of objects...)
-
-// You will also have to change the welcome page to show the users name
-// instead of 'Welcome Felcraft!'
-
 const PartTwentyEight = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [signedInUsername, setSignedInUsername] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showForgotMyPassword, setShowForgotMyPassword] = useState(false);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  const [registeredUsers, setRegisteredUsers] = useState([]);
 
   const onClickToggleShowPassword = () => {
     // if showPassword is true, we want to set it to false
@@ -37,8 +26,9 @@ const PartTwentyEight = () => {
     setShowPassword(!showPassword);
   };
 
-  const onSignInSuccess = () => {
+  const onSignInSuccess = (username) => {
     setIsSignedIn(true);
+    setSignedInUsername(username);
   };
 
   const onClickLogOut = () => {
@@ -58,6 +48,24 @@ const PartTwentyEight = () => {
     setShowRegistrationForm(true);
   };
 
+  const onClickRegister = (username, password) => {
+    // create a new user object with the username & password we entered on the reg form
+    const newUser = {
+      username,
+      password,
+    };
+
+    // creating a new array, that contains all the currently registered users + our new user object added onto the end
+    const newUsers = [
+      ...registeredUsers,
+      newUser,
+    ];
+
+    // update our state variable, registeredUsers with the new users array
+    setRegisteredUsers(newUsers);
+    onClickBackToLoginPage(true);
+  };
+
   if (!isSignedIn) {
     if (showForgotMyPassword) {
       return (
@@ -70,7 +78,8 @@ const PartTwentyEight = () => {
       return (
         <RegistrationForm
           showRegistrationForm={showRegistrationForm}
-          onClickBackToLoginPage={onClickBackToLoginPage} />
+          onClickBackToLoginPage={onClickBackToLoginPage}
+          onClickRegister={onClickRegister} />
       );
     }
 
@@ -80,7 +89,8 @@ const PartTwentyEight = () => {
           showPassword={showPassword}
           onClickToggleShowPassword={onClickToggleShowPassword}
           onClickForgotMyPassword={onClickForgotMyPassword}
-          onSignInSuccess={onSignInSuccess} />
+          onSignInSuccess={onSignInSuccess}
+          registeredUsers={registeredUsers} />
         <Registration
           onClickRegistrationForm={onClickRegistrationForm} />
       </div>
@@ -90,7 +100,8 @@ const PartTwentyEight = () => {
 
   return (
     <Homepage
-      onClickLogOut={onClickLogOut} />
+      onClickLogOut={onClickLogOut}
+      signedInUsername={signedInUsername} />
   );
 };
 

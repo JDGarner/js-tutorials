@@ -5,6 +5,7 @@ const SignInPage = ({
   onClickForgotMyPassword,
   onClickToggleShowPassword,
   onSignInSuccess,
+  registeredUsers,
 }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,18 +14,26 @@ const SignInPage = ({
 
   const onChangeUsername = (event) => {
     setUsername(event.target.value);
-    console.log(username);
   };
 
   const onChangePassword = (event) => {
     setPassword(event.target.value);
-    console.log(password);
+  };
+
+  const doesUserExist = () => {
+    return registeredUsers.some((registeredUser) => {
+      if (username === registeredUser.username && password === registeredUser.password) {
+        return true;
+      }
+
+      return false;
+    });
   };
 
   const onClickSignIn = () => {
     console.log(`username: ${username} password: ${password}`);
-    if (username === 'Felcraft' && password === 'creamy') {
-      onSignInSuccess();
+    if (doesUserExist()) {
+      onSignInSuccess(username);
     } else {
       const newIncorrectLoginAttempt = incorrectLoginAttempts + 1;
 

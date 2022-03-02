@@ -1,28 +1,71 @@
-import React from 'react';
-
-// TODO:
-// The idea for this app is to make a little German/English language learning game :).
-// For the first part we want to have something like:
-// - German word appears at the top of the page
-// - In an input box below that, the player has to write the correct English translation
-// - Then there is a button to submit the answer
-// - Then the user gets shown if it was correct or not and a button to go to the next question
-
-// TODO:
-// 1 - Look at data.js, import the wordData array from it into this file
-
-// 2 - Display the first german word from the array in the component below
-
-// 3 - Add an input element, linked to a state variable called userAnswer
-
-// 4 - Add a button with the text 'Submit', when clicked check if the userAnswer
-// matches the english translation of the german word
-
-// 5 - ask me for next steps
+import React, { useState } from 'react';
+import { wordData } from './data';
+import UserFeedback from './UserFeedback';
 
 const PartThirtyFour = () => {
+  const [userAnswer, setUserAnswer] = useState('');
+  const [isUserAnswerCorrect, setIsUserAnswerCorrect] = useState(false);
+  const [hasSubmittedUserAnswer, setHasSubmittedUserAnswer] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [incorrectUserAnswerAttempts, setIncorrectUserAnswerAttempts] = useState(0);
+  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+
+  const onChangeUserAnswer = (event) => {
+    setUserAnswer(event.target.value);
+  };
+
+  const onClickCheckUserAnswer = () => {
+    setHasSubmittedUserAnswer(true);
+    if (userAnswer.toLowerCase() === wordData[wordIndex].english.toLowerCase()) {
+      setIsUserAnswerCorrect(true);
+    } else {
+      setIsUserAnswerCorrect(false);
+      const newIncorrectUserAnswerAttempt = incorrectUserAnswerAttempts + 1;
+
+      setIncorrectUserAnswerAttempts(newIncorrectUserAnswerAttempt);
+    }
+  };
+
+  const onClickChangeWordIndex = () => {
+    const newWordIndex = Math.floor(Math.random() * wordData.length);
+
+    setWordIndex(newWordIndex);
+    setUserAnswer('');
+    setHasSubmittedUserAnswer(false);
+  };
+
+  const onClickShowAnswer = () => {
+    setShowCorrectAnswer(true);
+  };
+
   return (
-    <div>Hello</div>
+    <div>
+      <h1>Become a Master in German!</h1>
+      <h3>German word:</h3>
+      {wordData[wordIndex].deutsch.toUpperCase()}
+      <div>
+        <h3>English translation:</h3>
+        <input type="text" onChange={onChangeUserAnswer} value={userAnswer} />
+        <button type="button" onClick={onClickCheckUserAnswer}>Submit</button>
+        <button type="button" onClick={onClickChangeWordIndex}>Skip</button>
+
+        {showCorrectAnswer
+          ? <h4>Answer: {wordData[wordIndex].english}</h4>
+          : null
+        }
+
+        {hasSubmittedUserAnswer ? (
+          <UserFeedback
+            isUserAnswerCorrect={isUserAnswerCorrect}
+            onClickChangeWordIndex={onClickChangeWordIndex}
+            incorrectUserAnswerAttempts={incorrectUserAnswerAttempts}
+            onClickShowAnswer={onClickShowAnswer}
+            showCorrectAnswer={showCorrectAnswer} />
+        )
+          : null
+        }
+      </div>
+    </div>
   );
 };
 
