@@ -1,11 +1,11 @@
 export const wordData = [
   {
-    deutsch: 'leise',
-    english: 'quietly',
-  },
-  {
     deutsch: 'langsam',
     english: 'slowly',
+  },
+  {
+    deutsch: 'leise',
+    english: 'quietly',
   },
   {
     deutsch: 'schnell',

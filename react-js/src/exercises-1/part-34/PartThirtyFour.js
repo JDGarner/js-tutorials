@@ -3,21 +3,10 @@ import { wordData } from './data';
 import { getRandomIndex } from './utils';
 import PostRoundUserFeedback from './PostRoundUserFeedback';
 import Round from './Round';
+import { useInterval } from './useInterval';
+import './style.css';
 
-// TODO:
-// When displaying the question word, just capitalise the first letter
-// Also do the same for the words displaying in the post round feedback
-// Try look up on google how to do this
-// Once that's done, see if you can put that function into the utils.js file so you can use it
-// again in any file without having to repeat your logic
-
-// If there are no incorrect answers, add a message
-// If there are no correct answers, add a message
-
-// Add a main menu screen, that explains the game and then gives you a button to start to play
-
-// Add a 10 second timer, if the player doesn't answer within 10 seconds then
-// display a message - 'You ran out of time', and show the Next Word button
+const TIME_PER_QUESTION = 15;
 
 const PartThirtyFour = () => {
   const [userAnswer, setUserAnswer] = useState('');
@@ -32,6 +21,25 @@ const PartThirtyFour = () => {
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
   const [isShowingPostRoundFeedback, setIsShowingPostRoundFeedback] = useState(false);
+  const [countdownTime, setCountdownTime] = useState(TIME_PER_QUESTION);
+  const [didRunOutOfTime, setDidRunOutOfTime] = useState(false);
+  const [wordsUsedPerRound, setWordsUsedPerRound] = useState([wordData[wordIndex]]);
+  const shouldWeFreezeTimer = isUserAnswerCorrect || incorrectUserAnswerAttempts > 2;
+
+  useInterval(() => {
+    if (!shouldWeFreezeTimer) {
+      const newCountdownTime = countdownTime - 1;
+
+      if (newCountdownTime === 0) {
+        setDidRunOutOfTime(true);
+      }
+
+      if (newCountdownTime >= 0) {
+        setCountdownTime(newCountdownTime);
+        console.log(countdownTime);
+      }
+    }
+  }, 1000);
 
   const onChangeUserAnswer = (event) => {
     setUserAnswer(event.target.value);
@@ -67,12 +75,40 @@ const PartThirtyFour = () => {
     setIncorrectAnswers(newIncorrectAnswers);
   };
 
-  const onClickChangeWordIndex = () => {
-    const newWordIndex = getRandomIndex(wordData);
+  const isWordAlreadyUsedInSameRound = (newWordIndex) => {
+    return wordsUsedPerRound.some((wordObject) => {
+      if (wordObject.deutsch === wordData[newWordIndex].deutsch) {
+        return true;
+      }
+
+      return false;
+    });
+  };
+
+  const getRandomIndexNotUsedBefore = () => {
+    let newWordIndex = null;
+
+    do {
+      newWordIndex = getRandomIndex(wordData);
+    } while (isWordAlreadyUsedInSameRound(newWordIndex));
+
+    return newWordIndex;
+  };
+
+  const onSetupNewWord = () => {
+    const newWordIndex = getRandomIndexNotUsedBefore();
     const newWordNumber = wordNumber + 1;
+
+    const newWordUsedPerRound = [
+      ...wordsUsedPerRound,
+      wordData[newWordIndex],
+    ];
+
+    setWordsUsedPerRound(newWordUsedPerRound);
 
     if (wordNumber > 4) {
       setIsShowingPostRoundFeedback(true);
+      setWordsUsedPerRound([wordData[newWordIndex]]);
     } else {
       setWordNumber(newWordNumber);
     }
@@ -81,12 +117,15 @@ const PartThirtyFour = () => {
     setUserAnswer('');
     setShowCorrectAnswer(false);
     setHasSubmittedUserAnswer(false);
+    setDidRunOutOfTime(false);
+    setIsUserAnswerCorrect(false);
     setIncorrectUserAnswerAttempts(0);
+    setCountdownTime(TIME_PER_QUESTION);
   };
 
   const onClickSkip = () => {
     addWordToIncorrectAnswers();
-    onClickChangeWordIndex();
+    onSetupNewWord();
   };
 
   const onClickShowAnswer = () => {
@@ -109,6 +148,8 @@ const PartThirtyFour = () => {
     setUserScore(0);
     setIncorrectAnswers([]);
     setCorrectAnswers([]);
+    setCountdownTime(TIME_PER_QUESTION);
+    setDidRunOutOfTime(false);
   };
 
   return (
@@ -129,6 +170,7 @@ const PartThirtyFour = () => {
             wordIndex={wordIndex}
             userAnswer={userAnswer}
             showCorrectAnswer={showCorrectAnswer}
+            didRunOutOfTime={didRunOutOfTime}
             hasSubmittedUserAnswer={hasSubmittedUserAnswer}
             isUserAnswerCorrect={isUserAnswerCorrect}
             setUserScore={setUserScore}
@@ -137,8 +179,10 @@ const PartThirtyFour = () => {
             incorrectUserAnswerAttempts={incorrectUserAnswerAttempts}
             onClickCheckUserAnswer={onClickCheckUserAnswer}
             onClickSkip={onClickSkip}
-            onClickChangeWordIndex={onClickChangeWordIndex}
-            onClickShowAnswer={onClickShowAnswer} />
+            onSetupNewWord={onSetupNewWord}
+            onClickShowAnswer={onClickShowAnswer}
+            countdownTime={countdownTime}
+            shouldWeFreezeTimer={shouldWeFreezeTimer} />
         )
       }
     </div>

@@ -1,12 +1,16 @@
 import React from 'react';
 import { wordData } from './data';
 import UserFeedback from './UserFeedback';
+import { capitaliseFirstLetter } from './utils';
 
 const Round = ({
   round,
   userScore,
   wordIndex,
   userAnswer,
+  countdownTime,
+  didRunOutOfTime,
+  shouldWeFreezeTimer,
   showCorrectAnswer,
   hasSubmittedUserAnswer,
   isUserAnswerCorrect,
@@ -16,16 +20,18 @@ const Round = ({
   onChangeUserAnswer,
   onClickCheckUserAnswer,
   onClickSkip,
-  onClickChangeWordIndex,
+  onSetupNewWord,
   onClickShowAnswer,
 }) => {
+  const countdownTimeClassName = countdownTime <= 3 ? 'urgent-countdown' : null;
+
   return (
     <>
       <h1>Become a Master in German!</h1>
       <h2>Round: {round}</h2>
       <h2>Score: {userScore} </h2>
       <h3>German word:</h3>
-      {wordData[wordIndex].deutsch.toUpperCase()}
+      {capitaliseFirstLetter(wordData[wordIndex].deutsch)}
       <h3>English translation:</h3>
       <input type="text" onChange={onChangeUserAnswer} value={userAnswer} />
       {shouldHideSubmitAndSkipButtons()
@@ -39,20 +45,26 @@ const Round = ({
         }
 
       {showCorrectAnswer
-        ? <h4>Answer: {wordData[wordIndex].english}</h4>
+        ? <h4 className="feedback-messages">Answer: {capitaliseFirstLetter(wordData[wordIndex].english)}</h4>
         : null
         }
 
-      {hasSubmittedUserAnswer ? (
+      {hasSubmittedUserAnswer || didRunOutOfTime ? (
         <UserFeedback
           isUserAnswerCorrect={isUserAnswerCorrect}
-          onClickChangeWordIndex={onClickChangeWordIndex}
+          didRunOutOfTime={didRunOutOfTime}
+          onSetupNewWord={onSetupNewWord}
           incorrectUserAnswerAttempts={incorrectUserAnswerAttempts}
           onClickShowAnswer={onClickShowAnswer}
           showCorrectAnswer={showCorrectAnswer}
           userScore={userScore}
           setUserScore={setUserScore} />
       )
+        : null
+      }
+
+      {countdownTime !== 0 && !shouldWeFreezeTimer
+        ? <h4 className={countdownTimeClassName}>Timer: {countdownTime} seconds left</h4>
         : null
       }
     </>
